@@ -1,0 +1,12 @@
+{
+  "name": "node-plan",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Selvin11"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}

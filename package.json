@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Selvin11/Node-plan#readme",
   "dependencies": {
+    "bootstrap": "^3.3.7",
     "config-lite": "^1.5.0",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^1.3.2",

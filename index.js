@@ -1,24 +1,42 @@
 var path = require('path');
-
 var express = require('express');
-var app = express();
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
+var flash = require('connect-flash');
+var config = require('config-lite');
+var routes = require('./routes'); // routes/index.js
+var pkg = require('./package'); //packge.json
 
+
+var app = express();
+
+
+//设置模板引擎
 app.set('views', path.join(__dirname, 'views')); //视图模板存放目录
 app.set('view engine', 'pug');
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
 
-// app.get('/', function(req, res) {
-//   res.send('hello, express1');
-// });
+//设置静态文件路径
+app.use(express.static(path.join(__dirname, 'public')));
+//session中间件 调用config/default.js配置
+app.use(session({
+  name: config.session.key,
+  secret: config.session.secret,
+  cookie: {
+    maxAge: config.session.maxAge
+  },
+  store: new MongoStore({
+    url: config.mongodb // 将session存储于mongodb中
+  })
+}))
 
-// app.get('/users/:name', function(req, res) {
-//   res.send('hello, ' + req.params.name);
-// });
+// flash 中间价，用来显示通知
+app.use(flash());
 
 
-app.listen(3000);
+// 路由挂载
+routes(app);
 
-console.log('server is running at http://localhost:3000');
+
+app.listen(config.port, function() {
+  console.log(`${pkg.name} listening on port ${config.port}`);
+});

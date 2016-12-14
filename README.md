@@ -14,3 +14,20 @@
 * sha1: sha1 加密，用于密码加密
 * winston: 日志
 * express-winston: 基于 winston 的用于 express 的日志中间件
+
+> module exports && exports diff
+
+- module.exports 初始值为一个空对象 {}
+- exports 是指向的 module.exports 的引用
+- require() 返回的是 module.exports 而不是 
+
+
+- `exports = module.exports = {...}` === `module.exports = {...}; exports = module.exports;` : 
+- module.exports 指向新的对象时，exports 断开了与 module.exports 的引用，那么通过 exports = module.exports 让 exports 重新指向 module.exports。
+
+
+> express().use() && express.Router()
+
+- express().use() 挂载路由 load route
+- express.Router() 定义路由模块 create route module
+
