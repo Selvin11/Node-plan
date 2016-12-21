@@ -1,7 +1,7 @@
 module.exports = function(app) {
   // 定义以及挂载路由 express().use
   app.get('/', function(req, res) {
-    res.redirect('/posts');
+    res.redirect('/signup');
   });
   app.use('/signup', require('./signup'));
   app.use('/signin', require('./signin'));

@@ -31,3 +31,8 @@
 - express().use() 挂载路由 load route
 - express.Router() 定义路由模块 create route module
 
+> 中间件  next()使用
+
+- 函数顺序执行后，将控制权通过next()转交给下一个
+
+> 关于网页重定向过多产生310错误，需清除浏览器cookie
