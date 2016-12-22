@@ -1,0 +1,25 @@
+include common/header
+include common/nav-setting
+include common/notification
+.container
+  .row
+    .col-sm-6
+      .jumbotron
+        h3 Node Blog
+        p This is a simple blog , a simple node plan for you .
+    .col-sm-6
+      form.form-horizontal(role="form" method="post" enctype="multipart/form-data")
+        .form-group
+          label.col-sm-2.control-label 用户名
+          .col-sm-7
+            input.form-control(type="text" name="name")
+        .form-group
+          label.col-sm-2.control-label 密码
+          .col-sm-7
+            input.form-control(type="text" name="password")
+        .form-group
+          .col-sm-2
+          input.btn.btn-primary(type="submit" value="确定") 
+
+
+
