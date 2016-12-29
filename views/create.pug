@@ -2,3 +2,18 @@ include common/header
 include common/nav-setting
 include common/notification
 
+.container
+  .row
+    .col-sm-2.col-sm-offset-2
+      //- - var imgurl = user.avatar
+      img.img-rounded(src="/img/" + user.avatar style="width:100%;")
+    .col-sm-6
+      form(method="post" action="/posts")
+        .form-group
+          label 标题
+          input.form-control(type="text" name="title")
+        .form-group
+          label 文章
+          textarea.form-control(rows="10" name="content")
+
+        input.btn.btn-primary(type="submit" value="发布")

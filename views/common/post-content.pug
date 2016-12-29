@@ -1,0 +1,14 @@
+.container
+  .row
+    .col-sm-2.col-sm-offset-2
+      img.img-rounded(src="/img/" + user.avatar style="width:100%;")
+    .col-sm-6
+      h3
+        a(href="/posts/" + post._id)= post.title
+      pre= post.content
+      .row
+        .col-sm-8
+          span= post.created_at
+        .col-sm-4
+          span= post.pv
+          span= post.commentsCount
