@@ -1,14 +1,28 @@
 .container
   .row
     .col-sm-2.col-sm-offset-2
-      img.img-rounded(src="/img/" + user.avatar style="width:100%;")
+      a.text-right(href="/posts/?author=" + post.author._id)
+        img.img-rounded(src="/img/" + user.avatar style="width:60%;")
     .col-sm-6
       h3
         a(href="/posts/" + post._id)= post.title
       pre= post.content
       .row
-        .col-sm-8
+        .col-sm-7
           span= post.created_at
-        .col-sm-4
-          span= post.pv
+        .col-sm-3
+          span 阅读次数：#{post.pv}
           span= post.commentsCount
+        if user && post.author._id && user._id.toString() === post.author._id.toString()
+        .col-sm-2
+          .btn-group
+            button.btn.btn-primary.btn-xs(type="button") 编辑
+            button.btn.btn-primary.btn-xs.dropdown-toggle(type="button" data-toggle="dropdown")
+                span.caret
+                span.sr-only Toggle Dropdown
+            ul.dropdown-menu(role="menu")
+              li(role="presentation")
+                a(role="menuitem" tabindex="-1" href="/posts/#{post._id}/edit") 编辑
+              li(role="presentation")
+                a(role="menuitem" tabindex="-1" href="/posts/#{post._id}/remove") 删除
+                

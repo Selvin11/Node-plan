@@ -9,12 +9,12 @@ include common/notification
       a.text-right(href="/posts/?author=" + post.author._id)
         img.img-rounded(src="/img/" + user.avatar style="width:60%;")
     .col-sm-6
-      form(method="post" action="/posts")
+      form(method="post" action="/posts/" + post._id + "/edit")
         .form-group
           label 标题
-          input.form-control(type="text" name="title")
+          input.form-control(type="text" name="title" value="#{post.title}")
         .form-group
           label 文章
-          textarea.form-control(rows="10" name="content")
+          textarea.form-control(rows="10" name="content" value="#{post.content}")
 
         input.btn.btn-primary(type="submit" value="发布")
