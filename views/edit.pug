@@ -12,9 +12,9 @@ include common/notification
       form(method="post" action="/posts/" + post._id + "/edit")
         .form-group
           label 标题
-          input.form-control(type="text" name="title" value="#{post.title}")
+          input.form-control(type="text" name="title" value=post.title)
         .form-group
           label 文章
-          textarea.form-control(rows="10" name="content" value="#{post.content}")
+          textarea.form-control(rows="10" name="content")= post.content
 
         input.btn.btn-primary(type="submit" value="发布")
